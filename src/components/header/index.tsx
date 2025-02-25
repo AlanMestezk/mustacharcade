@@ -7,7 +7,7 @@ export const Header: React.FC = () => {
 
     return (
 
-        <header className="w-full h-21 bg-custom-blue-dark px-4 py-2">
+        <header className="w-full h-21 bg-white px-4 py-2">
 
             <div className="max-w-screen-xl mx-auto px-10 flex justify-center items-center h-28 sm:justify-between">
 
@@ -23,17 +23,17 @@ export const Header: React.FC = () => {
                             width={90}
                         />
 
-                        <h1 className="text-2xl text-blue-400 font-extrabold text-shadow-lg">
+                        <h1 className="text-2xl text-blue-500  font-extrabold text-shadow-lg">
                             Mustache<span className="text-orange-500">Arcade</span>
                         </h1>
 
                     </Link>
 
-                    <Link href="/" className='text-white font-bold ml-10'>
+                    <Link href="/" className='text-black hover:text-blue-500 font-bold ml-10 hover:scale-105 transition-all duration-300 ease-in-out'>
                         Games
                     </Link>
 
-                    <Link href="/profile" className='text-white font-bold'>
+                    <Link href="/profile" className='text-black  hover:text-orange-500  font-bold hover:scale-105 transition-all duration-300 ease-in-out'>
                         Profile
                     </Link>
 
@@ -42,7 +42,7 @@ export const Header: React.FC = () => {
                 <div className="hidden sm:flex justify-center items-center">
 
                     <Link href="/profile">
-                        <LiaGamepadSolid size={35} className='text-orange-500' />
+                        <LiaGamepadSolid size={35} className='text-orange-500 hover:text-blue-500 hover:scale-105 transition-all duration-300 ease-in-out' />
                     </Link>
 
                 </div>
