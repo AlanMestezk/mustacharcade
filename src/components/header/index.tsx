@@ -2,6 +2,8 @@ import logo                from '../../../public/LogoIcon.png'
 import Link                from 'next/link'
 import Image               from 'next/image'
 import { LiaGamepadSolid } from 'react-icons/lia'
+import { MdOutlineGames } from "react-icons/md";
+import { BsPersonSquare } from "react-icons/bs";
 
 export const Header: React.FC = () => {
 
@@ -29,12 +31,13 @@ export const Header: React.FC = () => {
 
                     </Link>
 
-                    <Link href="/" className='text-black hover:text-blue-500 font-bold ml-10 hover:scale-105 transition-all duration-300 ease-in-out'>
-                        Games
+                    <Link href="/" className='text-black hover:text-blue-500 text-base font-bold ml-10 hover:scale-105 transition-all duration-500 ease-in-out flex justify-center items-center'>
+                        Games‎‎<MdOutlineGames size={22} className='ml-1'/>
+
                     </Link>
 
-                    <Link href="/profile" className='text-black  hover:text-orange-500  font-bold hover:scale-105 transition-all duration-300 ease-in-out'>
-                        Profile
+                    <Link href="/profile" className='text-black  hover:text-orange-500 text-base ml-5 font-bold hover:scale-105 transition-all duration-500 ease-in-out flex justify-center items-center'>
+                        Profile‎‎<BsPersonSquare size={22} className='ml-1'/>
                     </Link>
 
                 </nav>
@@ -42,7 +45,7 @@ export const Header: React.FC = () => {
                 <div className="hidden sm:flex justify-center items-center">
 
                     <Link href="/profile">
-                        <LiaGamepadSolid size={35} className='text-orange-500 hover:text-blue-500 hover:scale-105 transition-all duration-300 ease-in-out' />
+                        <LiaGamepadSolid size={40} className='text-orange-500 hover:text-blue-500 hover:scale-110 transition-all duration-500 ease-in-out' />
                     </Link>
 
                 </div>
