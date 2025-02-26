@@ -1,14 +1,16 @@
-import { Container } from "@/components/container";
-import { GameProps } from "@/utils/types/game";
-import Link from "next/link";
-import Image from "next/image";
+import Link                 from "next/link";
+import Image                from "next/image";
+import {Input}              from '@/components/input/index'
+import { GameCard }         from "@/components/gameCard";
+import { Container }        from "@/components/container";
+import { GameProps }        from "@/utils/types/game";
 import { CgArrowTopRightR } from "react-icons/cg";
 
 const getDalyGame = async ()=>{
 
   try {
 
-    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game_day`, {next: {revalidate: 100}})
+    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game_day`, {next: {revalidate: 15}})
     
     return res.json();
     
@@ -19,9 +21,26 @@ const getDalyGame = async ()=>{
 
 }
 
+const getGamesData = async ()=>{
+
+  try {
+
+    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=games`, {next: {revalidate: 15}})
+    
+    return res.json();
+    
+  } catch (error) {
+
+    throw new Error(`Tentiva falha do retorno de dados, confira: ${error}`);
+  }
+
+
+}
+
 export default async function Home() {
 
-  const dalyGame: GameProps = await getDalyGame(); 
+  const dalyGame: GameProps   = await getDalyGame(); 
+  const dataGame: GameProps[] = await getGamesData();
 
   console.log(dalyGame)
   
@@ -32,7 +51,7 @@ export default async function Home() {
         
         <Container>
           
-          <h1 className="text-center font-bold text-xl mt-6 mb-5">Separamos uma indicação de jogo para você</h1>
+          <h1 className="text-center font-bold text-xl mt-6 mb-5 text-black">Separamos uma indicação de jogo para você</h1>
 
           <Link href={`/game/${dalyGame.id}`}>
 
@@ -64,6 +83,24 @@ export default async function Home() {
             </section>
 
           </Link>
+
+          <Input 
+            placeholder="Busque o jogo desejado..."
+          />
+
+          <h2 className="text-lg font-bold mt-8 mb-5">Jogos que vale a pena conhecer</h2>
+
+          <section className="grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+
+            {
+              dataGame.map(
+                (item) => (
+                  <GameCard key={item.id} data={item}/>
+                )
+              )
+            }
+
+          </section>
 
         </Container>
 

@@ -1,15 +1,15 @@
 import logo                from '../../../public/LogoIcon.png'
 import Link                from 'next/link'
 import Image               from 'next/image'
+import { MdOutlineGames }  from "react-icons/md";
+import { BsPersonSquare }  from "react-icons/bs";
 import { LiaGamepadSolid } from 'react-icons/lia'
-import { MdOutlineGames } from "react-icons/md";
-import { BsPersonSquare } from "react-icons/bs";
 
 export const Header: React.FC = () => {
 
     return (
 
-        <header className="w-full h-21 bg-white px-4 py-2">
+        <header className="w-full h-21 bg-[radial-gradient(circle_950px_at_2.5%_8%,_#d6e3ff_50%,_aliceblue_90%)] px-4 py-2">
 
             <div className="max-w-screen-xl mx-auto px-10 flex justify-center items-center h-28 sm:justify-between">
 
@@ -31,13 +31,13 @@ export const Header: React.FC = () => {
 
                     </Link>
 
-                    <Link href="/" className='text-black hover:text-blue-500 text-base font-bold ml-10 hover:scale-105 transition-all duration-500 ease-in-out flex justify-center items-center'>
-                        Games‎‎<MdOutlineGames size={22} className='ml-1'/>
+                    <Link href="/" className='text-clack hover:text-blue-500 text-base font-bold ml-10 hover:scale-105 transition-all duration-500 ease-in-out flex justify-center items-center'>
+                        Games<MdOutlineGames size={22} className='ml-1'/>
 
                     </Link>
 
                     <Link href="/profile" className='text-black  hover:text-orange-500 text-base ml-5 font-bold hover:scale-105 transition-all duration-500 ease-in-out flex justify-center items-center'>
-                        Profile‎‎<BsPersonSquare size={22} className='ml-1'/>
+                        Profile<BsPersonSquare size={22} className='ml-1'/>
                     </Link>
 
                 </nav>
