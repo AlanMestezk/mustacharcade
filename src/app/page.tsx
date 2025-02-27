@@ -51,7 +51,7 @@ export default async function Home() {
         
         <Container>
           
-          <h1 className="text-center font-bold text-xl mt-6 mb-5 text-black">Separamos uma indicação de jogo para você</h1>
+          <h1 className="text-center font-bold text-xl mt-6 mb-5 text-white">Separamos um jogo exclusivamente para você</h1>
 
           <Link href={`/game/${dalyGame.id}`}>
 
@@ -88,7 +88,7 @@ export default async function Home() {
             placeholder="Busque o jogo desejado..."
           />
 
-          <h2 className="text-lg font-bold mt-8 mb-5">Jogos que vale a pena conhecer</h2>
+          <h2 className="text-xl text-white font-bold mt-8 mb-5">Jogos que vale a pena conhecer</h2>
 
           <section className="grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 

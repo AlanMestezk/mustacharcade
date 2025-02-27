@@ -13,7 +13,7 @@ export const GameCard: React.FC<GameCardProps> = ({data})=>{
 
         <Link href={`/game/${data.id}`}>
         
-            <section className="w-full bg-slate-100 rounded-lg roudend-lg  mb-6">
+            <section className="w-full bg-slate-950 rounded-lg roudend-lg  mb-6">
                 
                 <div className="relative w-full h-56 hover:scale-105 transition-all duration-500 ease-in-out">
                     
@@ -28,9 +28,9 @@ export const GameCard: React.FC<GameCardProps> = ({data})=>{
 
                 </div>
 
-                <div className="flex items-center mt-4 justify-between">
+                <div className="flex items-center mt-4 justify-between p-3 hover:scale-105 transition-all duration-500 ease-in-out">
 
-                    <strong className="text-sm font-bold px-2 text-black text-ellipsis truncate whitespace-nowrap overflow-hidden">{data.title}</strong><BsArrowUpRightSquare size={25}/>
+                    <strong className="text-sm font-bold px-2 text-white text-ellipsis truncate whitespace-nowrap overflow-hidden">{data.title}</strong><BsArrowUpRightSquare size={25} color="white"/>
 
                 </div>
 
