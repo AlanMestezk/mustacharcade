@@ -1,8 +1,8 @@
 'use client'
 
 import { ImSearch }            from "react-icons/im";
+import { useRouter }           from "next/navigation";
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
 
 interface InputProps{
     placeholder:string;
@@ -10,25 +10,24 @@ interface InputProps{
 
 export const Input: React.FC<InputProps> = ({placeholder})=>{
 
-    const[input,     setInput] = useState<string>('')
-    const[message, setMessage] = useState<boolean>(false)
+    const [input, setInput]     = useState<string>('');
+    const [message, setMessage] = useState<boolean>(false);
 
-    const router = useRouter()
+    const router = useRouter();
 
-    const handleSearch=(event: FormEvent)=>{
-
+    const handleSearch = (event: FormEvent) => {
         event.preventDefault();
-
-        if(input === ""){
-            
-            setMessage(true)
-        }else{
-
-            router.push(`game/search/${input}`)
+    
+        const query = input.trim();
+        console.log("URL gerada para a busca:", `/game/search/${encodeURIComponent(query)}`);
+    
+        if (query === "") {
+            setMessage(true);
+        } else {
+            setMessage(false);
+            router.push(`/game/search/${encodeURIComponent(query)}`);
         }
-
-
-    }
+    };
 
     return(
 
@@ -53,7 +52,7 @@ export const Input: React.FC<InputProps> = ({placeholder})=>{
         
             {   
                 message && 
-                <div className="flex justify-center items-center ">
+                <div className="flex justify-center items-center mb-2">
                     <strong className="text-red-600 text-sm ">Primeiro digite o jogo desejado...</strong>
                 </div>
             }
