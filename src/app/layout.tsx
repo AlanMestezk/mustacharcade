@@ -5,7 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets : ["latin"],
 });
 
 const geistMono = Geist_Mono({
@@ -14,9 +14,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MustacheArcade",
-  description: "Site de revisão de jogos",
-  icons: "/LogoIcon.png",
+
+  icons      : "/LogoIcon.png",
+  title      : "MustacheArcade",
+  keywords   :['games', 'jogos', 'steam', 'epic games', 'indicação', 'análise', 'videogame', 'pc gamer'],
+  description: "Neste site, você encontra análises e recomendações de jogos para quando não souber o que jogar.",
+
+  openGraph:{
+    images:[`${process.env.PROJECT_URL}/PreviewIcon.png`]
+  },
+
+  robots:{
+    index    : true,
+    follow   : true,
+    nocache  : true,
+
+    googleBot:{
+      index       : true,
+      follow      : true,
+      noimageindex: true
+    }
+  }
+
 };
 
 export default function RootLayout({

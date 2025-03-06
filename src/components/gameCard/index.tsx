@@ -28,7 +28,7 @@ export const GameCard: React.FC<GameCardProps> = ({data})=>{
 
                 </div>
 
-                <div className="flex items-center mt-4 justify-between p-3 hover:scale-105 transition-all duration-500 ease-in-out">
+                <div className="flex items-center mt-4 justify-between p-3 hover:scale-60 transition-all duration-500 ease-in-out">
 
                     <strong className="text-sm font-bold px-2 text-white text-ellipsis truncate whitespace-nowrap overflow-hidden">{data.title}</strong><BsArrowUpRightSquare size={25} color="white"/>
 

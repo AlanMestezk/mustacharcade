@@ -85,7 +85,7 @@ export default async function Home() {
           </Link>
 
           <Input 
-            placeholder="Pesquise pelo jogo desejado utilizando uma palavra-chave, como: Mario ou Witcher..."
+            placeholder="Pesquise pelo jogo desejado..."
           />
 
           <h2 className="text-xl text-white font-bold mt-8 mb-5">Jogos que vale a pena conhecer</h2>

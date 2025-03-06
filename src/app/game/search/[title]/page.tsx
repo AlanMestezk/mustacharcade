@@ -7,19 +7,14 @@ import { GameProps } from "@/utils/types/game";
 
 const gamesData = async(title:string)=>{
 
-    console.log(`Título da busca: ${title}`);
-
     try {
-        const baseUrl = process.env.NEXT_API_URL?.replace(/\/$/, "") || "http://localhost:3000";
-        const apiUrl = `${baseUrl}/next-api/?api=game&title=${encodeURIComponent(title)}`;
-
-        console.log(`URL gerada para requisição: ${apiUrl}`);
-
-        const res = await fetch(apiUrl);
         
-        console.log(`Status da resposta: ${res.status}`);
+        const decodeTitle = decodeURI(title)
+        const res         = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game&title=${decodeTitle}`)
 
+        console.log(`Status da resposta: ${decodeTitle}`);
         return res.json();
+
     } catch (error) {
         console.log(`Erro ao buscar o título ${title}: ${error}`);
         return null;
@@ -43,7 +38,7 @@ export default async function Search(
             <Container>
 
                 <Input 
-                    placeholder="Pesquise pelo jogo desejado utilizando uma palavra-chave, como: Mario ou Witcher..."
+                    placeholder="Pesquise o jogo desejado..."
                 />
 
                 <div className="font-bold text-xl mt-89 text-white">
