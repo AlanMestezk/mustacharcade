@@ -1,12 +1,75 @@
-import { GameProps } from "@/utils/types/game"
+import Image         from 'next/image'
+import { Label }     from "./components/label"
+import {Metadata}    from 'next'
 import { redirect }  from "next/navigation"
-import Image from 'next/image'
+import { GameCard }  from "@/components/gameCard"
 import { Container } from "@/components/container"
-import { Label } from "./components/label"
-import { GameCard } from "@/components/gameCard"
+import { GameProps } from "@/utils/types/game"
+
+interface PropsParams{
+
+    params:{
+        id: string
+    }
+}
 
 ///next-api/?api=game&id=
 //next-api/?api=game_day
+
+export const generateMetadata = async ({params}: PropsParams): Promise<Metadata> =>{
+
+    
+    try {
+
+        const res: GameProps = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game&id=${params.id}`, {next: {revalidate: 60}})
+
+        //quando fizer a requisição do metadata eu recebo a resposta da api
+        .then(
+            (res) => res.json()
+        )
+        .catch(
+            ()=>{
+                //caso não tenha resposta da a api, retorna o metadata padrão
+                return{
+                    title: 'MustacheArcade - Descubra o jogo do momento'
+                }
+            }
+        )
+
+        return{
+
+            title      : res.title,
+            description: `${res.description.slice(0, 100)}...`,
+
+            openGraph:{
+                title : res.title,
+                images: [res.image_url]
+            },
+
+            robots:{
+                index    : true,
+                follow   : true,
+                nocache  : true,
+            
+                googleBot:{
+                  index       : true,
+                  follow      : true,
+                  noimageindex: true
+                }
+              }
+        }
+
+        
+    } catch (error) {
+        
+        //caso der erro, eu deixo uma metadata padrão
+        return{
+            title: 'MustacheArcade - Descubra o jogo do momento'
+        }
+
+    }
+
+}
 
 const getData = async (id: string) =>{
 
