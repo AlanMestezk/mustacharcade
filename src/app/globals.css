@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+html, body {
+  height: 100%; /* Garante que o corpo ocupe toda a altura da tela */
+}
+
+body {
   background-color: #173c51;
   background-image: linear-gradient(160deg, #0000000a 0%, #000000 100%);
+  background-repeat: no-repeat; /* Impede a repetição */
+  background-size: cover; /* Garante que o fundo cubra toda a tela */
+  background-attachment: fixed; /* Fixa o fundo enquanto você rola a página (opcional) */
 }

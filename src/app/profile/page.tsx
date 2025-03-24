@@ -1,9 +1,6 @@
 import { Container }    from "@/components/container";
-import Image            from 'next/image'
-import imageProfile     from '../../../public/imgProfile.png'
-import { TfiSharethis } from "react-icons/tfi";
-import { GameFavs }     from "./components/cards";
 import { SectionGameFav } from "./components/gamefav";
+import { HeaderProfile } from './components/HeaderProfile'
 
 
 export default function Profile(){
@@ -15,41 +12,9 @@ export default function Profile(){
 
             <Container>
 
-                <section 
-                    className="mt-8 mb-6 flex flex-col items-center justify-between relative sm:flex-row rounded-lg"
-                >
+                <HeaderProfile />
 
-                    <div className="w-full flex items-center justify-center gap-4 text-lg flex-col sm:flex-row sm:justify-normal">
-                        
-                        <Image 
-                        
-                            src={imageProfile}
-                            alt="Imagem do usuário"
-                            className="rounded-full w-56 h-56 object-cover"
-                        />
-                                                
-                        <div className="flex flex-col">
-                            <h1 className="font-bold text-2xl text-white ">Mustache User</h1>
-                            <strong className="text-white">'Hello, I'm new here'</strong>
-                        </div>
-
-                    </div>
-
-                    <div className="sm:absolute top-0 right-0 gap-3 flex items-center justify-center px-2 py-2">
-
-                        <button className="font-bold bg-blue-500 px-2 py-2 rounded-lg hover:bg-orange-500 hover:scale-110 transition-all duration-500 ease-in-out text-white">Settings</button>
-
-                        <button className="font-bold bg-blue-500 px-2 py-2 rounded-lg hover:bg-orange-500 hover:scale-110 transition-all duration-500 ease-in-out"><TfiSharethis size={25} color="aliceblue"/></button>
-
-                    </div>
-
-                </section>
-
-                <section>
-
-                    <SectionGameFav />
-
-                </section>
+                <SectionGameFav />
 
             </Container>
 
