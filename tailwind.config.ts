@@ -15,6 +15,9 @@ export default {
         'custom-blue-middle': '#203A43',
         'custom-blue-light': '#2C5364',
       },
+      screens: {
+        'xs': '633px', // Novo breakpoint para 633px
+      },
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to right, #2C5364, #203A43, #0F2027)',
       },

@@ -1,40 +1,46 @@
 'use client'
 
-import { useState }  from "react"
+import { useState, useEffect } from "react"
 import Image         from 'next/image'
 import { Container } from "@/components/container"
 import templatePhoto from '../../../../../public/imgProfile.png'
 import loading       from '../../../../../public/loading.gif'
 
-interface SettingsProps {
-    name  : string
-    image : string 
-    slogan: string
-}
+export const Settings: React.FC = () => {
 
-export const Settings: React.FC = ()=>{
+    const [nameUser, setNameUser] = useState<string>('')
+    const [imageUser, setImageUser] = useState<string>('') // Armazena a URL da imagem em base64
+    const [sloganUser, setSloganUser] = useState<string>('')
+    const [isSaving, setIsSaving] = useState<boolean>(false) 
+    const [isLoading, setIsLoading] = useState<boolean>(false) 
 
-    const [nameUser,       setNameUser] = useState<string>('')
-    const [imageUser,     setImageUser] = useState<string>('') // Armazena a URL da imagem
-    const [sloganUser,   setSloganUser] = useState<string>('')
-    const [isSaving,       setIsSaving] = useState<boolean>(false) 
-    const [isLoading,     setIsLoading] = useState<boolean>(false) 
+    // Recupera os dados do usuário ao carregar a página
+    useEffect(() => {
+        const storedProfileData = JSON.parse(localStorage.getItem('userProfile') || 'null')
+        if (storedProfileData && storedProfileData.image) {
+            setImageUser(storedProfileData.image) // Usa a string base64 salva
+            setNameUser(storedProfileData.name)
+            setSloganUser(storedProfileData.slogan)
+        }
+    }, [])
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
         if (e.target.files && e.target.files[0]) {
-
             const file = e.target.files[0]
-            const imageUrl = URL.createObjectURL(file) // Converte o arquivo para URL
+            const reader = new FileReader()
 
-            setImageUser(imageUrl)
+            reader.onloadend = () => {
+                const base64Image = reader.result as string
+                setImageUser(base64Image) // Converte para base64
+            }
+
+            reader.readAsDataURL(file)
         }
     }
 
     const handleSaveUserData = () => {
-
-        setIsLoading(true)  
-        setIsSaving(true)  
+        setIsLoading(true)
+        setIsSaving(true)
 
         const userData = {
             name: nameUser,
@@ -42,24 +48,18 @@ export const Settings: React.FC = ()=>{
             slogan: sloganUser
         }
 
-        
         setTimeout(() => {
-            localStorage.setItem('userProfile', JSON.stringify(userData))
-    
-
-            // Redirecionar para a página de HeaderProfile
-            window.location.href = '/profile'  
-        }, 2500) 
+            localStorage.setItem('userProfile', JSON.stringify(userData)) // Salva os dados no localStorage
+            window.location.href = '/profile' // Redireciona para o perfil
+        }, 2500)
     }
 
-
-    return(
+    return (
         <Container>
-            
-            <main className="mt-8 mb-6 flex items-center justify-around relative sm:flex-row rounded-lg">
+
+<main className="mt-8 mb-6 flex flex-col sm:flex-row items-center justify-around relative rounded-lg">
                 
                 <div className="flex flex-col justify-center items-center">
-
                     {
                         imageUser ? 
                         <Image 
@@ -70,7 +70,7 @@ export const Settings: React.FC = ()=>{
                             className="rounded-full w-56 h-56 object-cover mb-4"
                         /> : 
                         <Image 
-                            src={imageUser ? imageUser : templatePhoto} 
+                            src={templatePhoto} 
                             alt="User" 
                             width={150} 
                             height={100} 
@@ -95,7 +95,7 @@ export const Settings: React.FC = ()=>{
                         type="text" 
                         value={nameUser}
                         placeholder="Enter your new name here..."
-                        onChange={(e)=> setNameUser(e.target.value)}
+                        onChange={(e) => setNameUser(e.target.value)}
                     />
                     
                     <input 
@@ -103,7 +103,7 @@ export const Settings: React.FC = ()=>{
                         type="text" 
                         value={sloganUser}
                         placeholder="And here's your new slogan..."
-                        onChange={(e)=>setSloganUser(e.target.value)}
+                        onChange={(e) => setSloganUser(e.target.value)}
                     />
                     
                     {
@@ -126,9 +126,7 @@ export const Settings: React.FC = ()=>{
                             </button>
                         )
                     }
-
                 </div>
-
             </main>
         </Container>
     )
