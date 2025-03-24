@@ -2,7 +2,8 @@ import { Container }    from "@/components/container";
 import Image            from 'next/image'
 import imageProfile     from '../../../public/imgProfile.png'
 import { TfiSharethis } from "react-icons/tfi";
-import { GameFavs }     from "./components";
+import { GameFavs }     from "./components/cards";
+import { SectionGameFav } from "./components/gamefav";
 
 
 export default function Profile(){
@@ -26,7 +27,7 @@ export default function Profile(){
                             alt="Imagem do usuário"
                             className="rounded-full w-56 h-56 object-cover"
                         />
-                        
+                                                
                         <div className="flex flex-col">
                             <h1 className="font-bold text-2xl text-white ">Mustache User</h1>
                             <strong className="text-white">'Hello, I'm new here'</strong>
@@ -44,19 +45,9 @@ export default function Profile(){
 
                 </section>
 
-                <section className="flex flex-rap gap-4 flex-col md:flex-row">
-                    
-                    <div className="flex-grow flex-wrap">
-                        <GameFavs />
-                    </div>
+                <section>
 
-                    <div className="flex-grow flex-wrap">
-                        <GameFavs />
-                    </div>
-                    
-                    <div className="flex-grow flex-wrap">
-                        <GameFavs />
-                    </div>
+                    <SectionGameFav />
 
                 </section>
 
