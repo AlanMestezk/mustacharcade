@@ -1,7 +1,7 @@
 'use client'
 
-import { Container } from "@/components/container"
-import { GameFavs }  from "../cards"
+import { Container }           from "@/components/container"
+import { Cards }            from "../Cards"
 import { useEffect, useState } from "react"
 
 export const SectionGameFav : React.FC = ()=>{
@@ -41,7 +41,7 @@ export const SectionGameFav : React.FC = ()=>{
                         (game, index)=>(
                             <div key={index} className="flex-grow flex-wrap">
                                 
-                                <GameFavs 
+                                <Cards 
                                     index={index}
                                     game={game}
                                     updateGameFav={updateGameFav}

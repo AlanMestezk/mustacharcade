@@ -16,6 +16,7 @@ export const Input: React.FC<InputProps> = ({placeholder})=>{
     const router = useRouter();
 
     const handleSearch = (event: FormEvent) => {
+
         event.preventDefault();
     
         const query = input.trim();
@@ -27,6 +28,7 @@ export const Input: React.FC<InputProps> = ({placeholder})=>{
             setMessage(false);
             router.push(`/game/search/${encodeURIComponent(query)}`);
         }
+
     };
 
     return(
@@ -52,9 +54,9 @@ export const Input: React.FC<InputProps> = ({placeholder})=>{
         
             {   
                 message && 
-                <div className="flex justify-center items-center mb-2">
-                    <strong className="text-red-600 text-sm ">Primeiro digite o jogo desejado...</strong>
-                </div>
+                    <div className="flex justify-center items-center mb-2 bg-red-300 ">
+                        <strong className="text-red-600 text-sm ">Primeiro digite o jogo desejado...</strong>
+                    </div>
             }
         </>
 

@@ -13,7 +13,7 @@ interface GameFavProps {
     updateGameFav: (index: number, newGame: string) => void;
 }
 
-export const GameFavs: React.FC<GameFavProps> = ({ index, game, updateGameFav }) => {
+export const Cards: React.FC<GameFavProps> = ({ index, game, updateGameFav }) => {
 
     const [gameFav,     setGameFav] = useState<string>(game);
     const [showInput, setShowInput] = useState<boolean>(false);
@@ -26,11 +26,13 @@ export const GameFavs: React.FC<GameFavProps> = ({ index, game, updateGameFav })
             setShowInput(false);
 
         }
+
+        setShowInput(false)
     };
 
     return (
 
-        <div className="w-auto bg-gradient-to-r from-purple-500 via-purple-600 to-blue-500 p-10 h-44 text-white flex justify-between flex-col rounded-lg">
+        <div className="w-auto mb-90 h-24 bg-gradient-to-r from-purple-500 via-purple-600 to-blue-500 p-2 xs:p-10 xs:h-44 text-white flex justify-between flex-col rounded-lg">
 
             {showInput ? 
                 (
@@ -62,15 +64,16 @@ export const GameFavs: React.FC<GameFavProps> = ({ index, game, updateGameFav })
                     </button>
                 )
             }
-            {game && game.length >= 4 ? 
-                (
-                    <div className="flex flex-col justify-center items-center">
-                        <strong>Favorite game:</strong>
-                        <strong className="text-2xl">{game}</strong>
-                    </div>
-                ) : (
-                    <p className="font-bold">Add your favorite game</p>
-                )
+            {
+                game && game.length >= 4 ? 
+                    (
+                        <div className="flex flex-col justify-center items-center xs:mt-1 -mt-2">
+                            <strong>Favorite game:</strong>
+                            <strong className="xs:text-2xl text-base">{game}</strong>
+                        </div>
+                    ) : (
+                        <p className="font-bold">Add your favorite game</p>
+                    )
             }
         </div>
     );

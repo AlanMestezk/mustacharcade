@@ -9,7 +9,7 @@ import { Settings }            from '../Settings'
 export const HeaderProfile: React.FC = ()=>{
 
     const [butonSettings, setButtonSettings] = useState<boolean>(true)
-    const [userProfile, setUserProfile] = useState<any>(null)
+    const [userProfile,      setUserProfile] = useState<any>(null)
 
     useEffect(() => {
         // Carregar dados do localStorage
@@ -24,7 +24,7 @@ export const HeaderProfile: React.FC = ()=>{
     }
 
     return(
-        <main>
+        <main className='-mt-32 xs:mt-44'>
             <Container>
 
                 {
@@ -36,12 +36,12 @@ export const HeaderProfile: React.FC = ()=>{
                                 <Image 
                                     src={userProfile?.image || '/imgProfile.png'}
                                     alt="Imagem do usuário"
-                                    className="rounded-full w-56 h-56 object-cover"
+                                    className="rounded-full w-56 h-56 object-cover border-2 border-x-violet-500"
                                     width={150} 
                                     height={100} 
                                 />
                                                     
-                                <div className="flex flex-col">
+                                <div className="flex flex-col justify-center items-center">
                                     <h1 className="font-bold text-2xl text-white ">{userProfile?.name || 'Mustache User'}</h1>
                                     <strong className="text-white">{userProfile?.slogan || "'Hello, I'm new here'"}</strong>
                                 </div>
@@ -56,8 +56,6 @@ export const HeaderProfile: React.FC = ()=>{
                                 >
                                     Settings
                                 </button>
-
-                                <button className="font-bold bg-blue-500 px-2 py-2 rounded-lg hover:bg-orange-500 hover:scale-110 transition-all duration-500 ease-in-out"><TfiSharethis size={25} color="aliceblue"/></button>
 
                             </div>
 

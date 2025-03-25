@@ -1,6 +1,6 @@
-import { Container }    from "@/components/container";
-import { SectionGameFav } from "./components/gamefav";
-import { HeaderProfile } from './components/HeaderProfile'
+import { Container }      from "@/components/container";
+import { SectionGameFav } from "./components/SectionGameFav";
+import { HeaderProfile }  from './components/HeaderProfile'
 
 
 export default function Profile(){
