@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+<p align="center">
+  <img width="300" alt="Capturar" src="https://github.com/user-attachments/assets/c195a88d-f2f9-41ee-a5fd-5694a992a9f0" />
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# MustacheArcade
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**MustacheArcade** is a game review website built with **TypeScript**, **Next.js**, and **Tailwind CSS**. The project allows users to create a profile where they can add their favorite games and feature the ones they love most. It was developed to put into practice the knowledge acquired with Next.js and is constantly evolving.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Profile Creation**: Users can create their profiles on the website and personalize them with a list of favorite games.
+- **Game Highlight**: The ability to feature preferred games directly on the profile, offering a unique way to organize and share game recommendations.
+- **Game Reviews**: Users can rate games of their choice, providing feedback on gameplay, graphics, story, and other important aspects.
+- **Responsive Interface**: The website is developed to provide a smooth experience on both mobile and desktop devices, using **Tailwind CSS** for modern and efficient styling.
+- **Search and Filters**: Search tools to find games by title, genre, or popularity.
+- **API Integration**: The website consumes data from external APIs to provide updated information about games, such as ratings and descriptions.
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js**: A React framework for building web applications with a focus on server-side rendering (SSR) and performance optimization.
+- **TypeScript**: To ensure static typing and improve code quality during development.
+- **Tailwind CSS**: A utility-first CSS framework for quick and custom styling.
+- **React**: A JavaScript library for building dynamic and reactive user interfaces.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/AlanMestezk/MustacheArcade.git
+   cd MustacheArcade
+   npm install
+   npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
