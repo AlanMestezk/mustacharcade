@@ -1,7 +1,7 @@
 'use client'
 
 import { Container }           from "@/components/container"
-import { Cards }               from "./Cards"
+import { Cards }               from "./components/Cards"
 import { useEffect, useState } from "react"
 
 export const SectionGameFav : React.FC = ()=>{
