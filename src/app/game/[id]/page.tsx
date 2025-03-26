@@ -142,7 +142,9 @@ export default async function GameDetail ({
                     {
                         data?.platforms?.length ? 
                             (
-                                data.platforms.map((item) => <Label name={item} key={item} />)
+                                data.platforms.map(
+                                    (item) => <Label name={item} key={item} />
+                                )
                             ) : 
                             (
                                 <p>Carregando ou sem plataformas...</p>

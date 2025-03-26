@@ -32,7 +32,7 @@ export const Cards: React.FC<GameFavProps> = ({ index, game, updateGameFav }) =>
 
     return (
 
-        <div className="w-auto mb-90 h-24 bg-gradient-to-r from-purple-500 via-purple-600 to-blue-500 p-2 xs:p-10 xs:h-44 text-white flex justify-between flex-col rounded-lg">
+        <div className="w-auto mb-90 h-24  bg-cyan-100 p-2 xs:p-10 xs:h-44 text-black flex justify-between flex-col rounded-lg">
 
             {showInput ? 
                 (

@@ -3,7 +3,6 @@
 import { Container }           from '@/components/container'
 import Image                   from 'next/image'
 import { useState, useEffect } from 'react'
-import { TfiSharethis }        from 'react-icons/tfi'
 import { Settings }            from '../Settings'
 
 export const HeaderProfile: React.FC = ()=>{
@@ -24,7 +23,8 @@ export const HeaderProfile: React.FC = ()=>{
     }
 
     return(
-        <main className='-mt-32 xs:mt-44'>
+
+        <main className='-mt-32 xs:mt-44 bg-custom-gradient-blue rounded-lg'>
             <Container>
 
                 {

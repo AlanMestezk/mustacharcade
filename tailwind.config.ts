@@ -20,6 +20,7 @@ export default {
       },
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to right, #2C5364, #203A43, #0F2027)',
+        'custom-gradient-blue': 'radial-gradient(circle 710px at 5.2% 7.2%, rgba(37,89,222,1) 0%, rgba(37,89,222,1) 7.5%, rgba(4,4,29,1) 44.7%)',
       },
     },
   },

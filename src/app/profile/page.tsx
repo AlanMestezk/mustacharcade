@@ -7,7 +7,7 @@ export default function Profile(){
 
     return(
 
-       <main className="w-full text-aliceblue mt-40">
+       <main className="hs:w-full text-aliceblue mt-40 xs:h-1/6  h-0">
 
 
             <Container>
