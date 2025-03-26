@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import                           "./globals.css";
 import { Header }            from "@/components/header";
 import type { Metadata }     from "next";
@@ -49,7 +50,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header/>
-        {children}
+          {children}
+
       </body>
     </html>
   );

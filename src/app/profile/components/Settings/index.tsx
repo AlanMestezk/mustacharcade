@@ -108,7 +108,7 @@ export const Settings: React.FC = () => {
                 
                 <div className="flex flex-col justify-center items-center p-6 py-3">
                     <input 
-                        className="xs:mb-5 xs:mt-1 mt-5 mb-4 xs:w-80 xs:h-8 w-64 h-10  border rounded-lg text-center font-bold"
+                        className="xs:mb-5 xs:mt-1 mt-5 mb-4 xs:w-80 xs:h-8 w-64 h-10  border rounded-lg text-center font-bold outline-none"
                         type="text" 
                         value={nameUser}
                         placeholder="Enter your new name here..."
@@ -116,7 +116,7 @@ export const Settings: React.FC = () => {
                     />
                     
                     <input 
-                        className="mb-10 xs:w-80 xs:h-8 w-64 h-10 border rounded-lg text-center font-bold"
+                        className="mb-10 xs:w-80 xs:h-8 w-64 h-10 border rounded-lg text-center font-bold outline-none"
                         type="text" 
                         value={sloganUser}
                         placeholder="And here's your new slogan..."

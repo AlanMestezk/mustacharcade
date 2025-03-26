@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
 
             <div className="max-w-screen-xl mx-auto px-6 flex flex-wrap justify-center items-center sm:justify-between">
 
-            <nav className="flex flex-wrap xs:flex-row flex-col justify-center xs:justify-between items-center gap-3 px-2 py-3 w-full xs:w-auto">
+                <nav className="flex flex-wrap xs:flex-row flex-col justify-center xs:justify-between items-center gap-3 px-2 py-3 w-full xs:w-auto">
 
                     <Link href="/" className="flex flex-col justify-center items-center sm:mr-8">
 

@@ -37,7 +37,7 @@ export const Input: React.FC<InputProps> = ({placeholder})=>{
 
             <form  
                 onSubmit={handleSearch} 
-                className="w-full bg-cyan-100  my-5 flex gap-2 items-center justify-between rounded-mg p-2"
+                className="w-full bg-slate-950 my-5 flex gap-2 items-center justify-between rounded-mg p-2"
             >
 
                 <input 
@@ -45,7 +45,7 @@ export const Input: React.FC<InputProps> = ({placeholder})=>{
                     placeholder={placeholder}
                     value={input}
                     onChange={(e)=> setInput(e.target.value)}
-                    className="bg-cyan-100 outline-none w-11/12 "
+                    className="bg-slate-950 outline-none w-11/12 text-white text-bold text-center"
                 />
 
                 <button type="submit"><ImSearch size={24} className="text-orange-500 hover:text-blue-500 hover:scale-110 transition-all duration-500 ease-in-out"/></button>
