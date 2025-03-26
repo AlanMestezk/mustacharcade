@@ -43,7 +43,7 @@ export const generateMetadata = async ({ params }: { params: { id: string } }): 
 };
 
 // Função para buscar os dados do jogo
-const getData = async (id: string) => {
+const getData = async (id: string): Promise<GameProps> => {
   try {
     const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game&id=${id}`, { next: { revalidate: 60 } });
     return res.json();
@@ -53,7 +53,7 @@ const getData = async (id: string) => {
 };
 
 // Função para buscar jogos recomendados
-const getGamesSorted = async () => {
+const getGamesSorted = async (): Promise<GameProps> => {
   try {
     const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game_day`, { cache: "no-store" });
     return res.json();
@@ -74,61 +74,75 @@ interface GamePageProps {
 export default async function GameDetail({ params }: GamePageProps) {
   const { id } = params;
 
-  const data: GameProps = await getData(id);
-  const gameSorted: GameProps = await getGamesSorted();
+  try {
+    const data: GameProps = await getData(id);
+    const gameSorted: GameProps = await getGamesSorted();
 
-  console.log(gameSorted);
+    console.log(gameSorted);
 
-  if (!data) {
-    redirect("/");
-  }
+    if (!data) {
+      redirect("/");
+    }
 
-  return (
-    <main className="w-full text-white">
-      <Container>
-        <div className="bg-clack sm:h-96 h-80 w-700 relative mt-4">
-          <Image
-            className="max-h-120 object-cover opacity-80 "
-            sizes="(max-width: 900px) 100vw, (max-width: 1200px) 33vw"
-            src={data.image_url}
-            alt={data.title}
-            priority={true}
-            fill={true}
-          />
-        </div>
-
-        <h1 className="font-bold text-xl my-4">{data.title}</h1>
-        <strong>{data.description}</strong>
-
-        <h2 className="font-bold text-lg mt-7 mb-2">Plataformas</h2>
-        <div className="flex gap-2 flex-wrap my-4">
-          {data?.platforms?.length ? (
-            data.platforms.map((item) => <Label name={item} key={item} />)
-          ) : (
-            <p>Carregando ou sem plataformas...</p>
-          )}
-        </div>
-
-        <h2 className="font-bold text-lg mt-7 mb-2">Categorias</h2>
-        <div className="flex gap-2 flex-wrap my-4">
-          {data.categories.map((item) => (
-            <Label name={item} key={item} />
-          ))}
-        </div>
-
-        <p className="mt-7 mb-2">
-          <strong>Data de lançamento: </strong>
-          {data.release ? `${data.release}` : `${data.data_release}`}
-        </p>
-
-        <h2 className="mt-20 font-bold text-lg  mb-2">Jogo recomendado: </h2>
-
-        <div className="flex">
-          <div className="flex-grow">
-            <GameCard data={gameSorted} />
+    return (
+      <main className="w-full text-white">
+        <Container>
+          <div className="bg-clack sm:h-96 h-80 w-700 relative mt-4">
+            <Image
+              className="max-h-120 object-cover opacity-80 "
+              sizes="(max-width: 900px) 100vw, (max-width: 1200px) 33vw"
+              src={data.image_url}
+              alt={data.title}
+              priority={true}
+              fill={true}
+            />
           </div>
-        </div>
-      </Container>
-    </main>
-  );
+
+          <h1 className="font-bold text-xl my-4">{data.title}</h1>
+          <strong>{data.description}</strong>
+
+          <h2 className="font-bold text-lg mt-7 mb-2">Plataformas</h2>
+          <div className="flex gap-2 flex-wrap my-4">
+            {data?.platforms?.length ? (
+              data.platforms.map((item) => <Label name={item} key={item} />)
+            ) : (
+              <p>Carregando ou sem plataformas...</p>
+            )}
+          </div>
+
+          <h2 className="font-bold text-lg mt-7 mb-2">Categorias</h2>
+          <div className="flex gap-2 flex-wrap my-4">
+            {data.categories.map((item) => (
+              <Label name={item} key={item} />
+            ))}
+          </div>
+
+          <p className="mt-7 mb-2">
+            <strong>Data de lançamento: </strong>
+            {data.release ? `${data.release}` : `${data.data_release}`}
+          </p>
+
+          <h2 className="mt-20 font-bold text-lg  mb-2">Jogo recomendado: </h2>
+
+          <div className="flex">
+            <div className="flex-grow">
+              <GameCard data={gameSorted} />
+            </div>
+          </div>
+        </Container>
+      </main>
+    );
+  } catch (error: any) {
+    console.error("Erro ao carregar a página do jogo:", error.message);
+    // Adicione uma lógica de tratamento de erro mais amigável para o usuário
+    return (
+      <main className="w-full text-white">
+        <Container>
+          <p className="text-red-500">Ocorreu um erro ao carregar os detalhes do jogo.</p>
+          <p className="text-gray-400">{error.message}</p>
+          {/* Você pode adicionar um link para a página inicial ou outra ação aqui */}
+        </Container>
+      </main>
+    );
+  }
 }
