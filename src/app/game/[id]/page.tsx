@@ -63,7 +63,15 @@ const getGamesSorted = async () => {
 };
 
 // Página do jogo
-export default async function GameDetail({ params }: { params: { id: string } }) {
+interface Params {
+  id: string;
+}
+
+interface GamePageProps {
+  params: Params;
+}
+
+export default async function GameDetail({ params }: GamePageProps) {
   const { id } = params;
 
   const data: GameProps = await getData(id);
