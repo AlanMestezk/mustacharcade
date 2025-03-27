@@ -1,57 +1,14 @@
 import { Metadata } from "next";
-import { redirect } from "next/navigation";
 import Image from "next/image";
 import { GameCard } from "@/components/gameCard";
 import { Container } from "@/components/container";
 import { GameProps } from "@/utils/types/game";
 import { Label } from "./components/label";
 
-// Geração de metadata
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> => {
-  try {
-    const res: GameProps = await fetch(
-      `${process.env.NEXT_API_URL}/next-api/?api=game&id=${params.id}`,
-      {
-        next: { revalidate: 60 },
-      }
-    ).then((res) => res.json());
-
-    return {
-      title: res.title || "MustacheArcade - Descubra o jogo do momento",
-      description: res.description ? `${res.description.slice(0, 100)}...` : "",
-      openGraph: {
-        title: res.title,
-        images: [res.image_url],
-      },
-      robots: {
-        index: true,
-        follow: true,
-        nocache: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          noimageindex: true,
-        },
-      },
-    };
-  } catch (error) {
-    return {
-      title: "MustacheArcade - Descubra o jogo do momento",
-    };
-  }
-};
-
 // Função para buscar os dados do jogo
 const getData = async (id: string): Promise<GameProps | null> => {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_API_URL}/next-api/?api=game&id=${id}`,
-      { next: { revalidate: 60 } }
-    );
+    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game&id=${id}`, { next: { revalidate: 60 } });
     if (!res.ok) throw new Error("Erro ao buscar dados do jogo");
     return res.json();
   } catch (error) {
@@ -63,10 +20,7 @@ const getData = async (id: string): Promise<GameProps | null> => {
 // Função para buscar jogos recomendados
 const getGamesSorted = async (): Promise<GameProps | null> => {
   try {
-    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game_day`, {
-      cache: "no-store",
-    });
-
+    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game_day`, { cache: "no-store" });
     if (!res.ok) throw new Error("Erro ao buscar jogo recomendado");
     return res.json();
   } catch (error) {
@@ -75,16 +29,22 @@ const getGamesSorted = async (): Promise<GameProps | null> => {
   }
 };
 
-// Componente da página
-const GameDetail = async ({ params }: { params: { id: string } }) => {
+interface GameDetailPageProps {
+  params: {
+    id: string;
+  };
+}
+
+const GameDetail = async ({ params }: GameDetailPageProps) => {
   const { id } = params;
 
+  // Buscar os dados do jogo e os jogos recomendados
   const data = await getData(id);
   const gameSorted = await getGamesSorted();
 
+  // Verificar se os dados estão disponíveis
   if (!data) {
-    redirect("/");
-    return null; // Evita erro de renderização
+    return <div>Jogo não encontrado</div>; // Se os dados não forem encontrados
   }
 
   return (
