@@ -32,11 +32,11 @@ export const Cards: React.FC<GameFavProps> = ({ index, game, updateGameFav }) =>
 
     return (
 
-        <div className="w-auto mb-90 h-24  bg-cyan-100 p-2 xs:p-10 xs:h-44 text-black flex justify-between flex-col rounded-lg">
+        <div className="w-auto mb-100 h-24 bg-cyan-100 p-2 xs:p-10 xs:h-44 text-black flex justify-between flex-col rounded-lg">
 
             {showInput ? 
                 (
-                    <div className="flex items-center justify-center gap-3">
+                    <div className="mb-20 flex items-center justify-center gap-3">
 
                         <input
                             type="text"
@@ -75,6 +75,10 @@ export const Cards: React.FC<GameFavProps> = ({ index, game, updateGameFav }) =>
                         <p className="font-bold">Add your favorite game</p>
                     )
             }
+
+            <div className="mt-20">
+                <h1>‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎</h1>
+            </div>
         </div>
     );
 };

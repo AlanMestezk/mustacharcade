@@ -36,7 +36,7 @@ export const HeaderProfile: React.FC = ()=>{
                                 <Image 
                                     src={userProfile?.image || '/imgProfile.png'}
                                     alt="Imagem do usuário"
-                                    className="rounded-full w-56 h-56 object-cover border-2 border-x-violet-500"
+                                    className="rounded-full xs:w-56 xs:h-56 w-36 h-36 object-cover border-2 border-x-violet-500"
                                     width={150} 
                                     height={100} 
                                 />
