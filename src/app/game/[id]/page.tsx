@@ -6,18 +6,19 @@ import { Container } from "@/components/container";
 import { GameProps } from "@/utils/types/game";
 import { Label } from "./components/label";
 
-interface GameDetailPageProps {
-  params: {
-    id: string;
-  };
-}
-
 // Geração de metadata
-export const generateMetadata = async ({ params }: GameDetailPageProps): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> => {
   try {
-    const res: GameProps = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game&id=${params.id}`, {
-      next: { revalidate: 60 },
-    }).then((res) => res.json());
+    const res: GameProps = await fetch(
+      `${process.env.NEXT_API_URL}/next-api/?api=game&id=${params.id}`,
+      {
+        next: { revalidate: 60 },
+      }
+    ).then((res) => res.json());
 
     return {
       title: res.title || "MustacheArcade - Descubra o jogo do momento",
@@ -47,7 +48,10 @@ export const generateMetadata = async ({ params }: GameDetailPageProps): Promise
 // Função para buscar os dados do jogo
 const getData = async (id: string): Promise<GameProps | null> => {
   try {
-    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game&id=${id}`, { next: { revalidate: 60 } });
+    const res = await fetch(
+      `${process.env.NEXT_API_URL}/next-api/?api=game&id=${id}`,
+      { next: { revalidate: 60 } }
+    );
     if (!res.ok) throw new Error("Erro ao buscar dados do jogo");
     return res.json();
   } catch (error) {
@@ -59,7 +63,10 @@ const getData = async (id: string): Promise<GameProps | null> => {
 // Função para buscar jogos recomendados
 const getGamesSorted = async (): Promise<GameProps | null> => {
   try {
-    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game_day`, { cache: "no-store" });
+    const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game_day`, {
+      cache: "no-store",
+    });
+
     if (!res.ok) throw new Error("Erro ao buscar jogo recomendado");
     return res.json();
   } catch (error) {
@@ -68,7 +75,8 @@ const getGamesSorted = async (): Promise<GameProps | null> => {
   }
 };
 
-const GameDetail = async ({ params }: GameDetailPageProps) => {
+// Componente da página
+const GameDetail = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
 
   const data = await getData(id);
