@@ -29,13 +29,8 @@ const getGamesSorted = async (): Promise<GameProps | null> => {
   }
 };
 
-interface GameDetailPageProps {
-  params: {
-    id: string;
-  };
-}
-
-const GameDetail = async ({ params }: GameDetailPageProps) => {
+// Função do componente para a página de detalhes do jogo
+const GameDetail = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
 
   // Buscar os dados do jogo e os jogos recomendados
