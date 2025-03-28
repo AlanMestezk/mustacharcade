@@ -1,8 +1,13 @@
 import type { NextConfig } from "next";
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   images: {
-    domains: ["sujeitoprogramador.com"], // Adicione aqui o domínio externo
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "sujeitoprogramador.com", // Substitua pelo seu domínio de imagem
+      },
+    ],
   },
 };
 

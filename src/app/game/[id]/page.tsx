@@ -31,12 +31,12 @@ const getGamesSorted = async (): Promise<GameProps | null> => {
 
 // Corrigir o tipo do parâmetro para ser compatível com Next.js
 interface GameDetailProps {
-  params: { id: string };
+  params: { id: string }; // Garantir que 'params' tem o formato esperado
 }
 
 // Componente agora tem um tipo explícito para evitar o erro do Next.js
 const GameDetail = async ({ params }: GameDetailProps) => {
-  const { id } = params;
+  const { id } = params; // Aqui, `params.id` deve ser resolvido corretamente
 
   // Buscar os dados do jogo e os jogos recomendados
   const data = await getData(id);
