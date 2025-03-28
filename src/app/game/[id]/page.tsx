@@ -5,7 +5,7 @@ import { Container } from "@/components/container";
 import { GameProps } from "@/utils/types/game";
 import { Label } from "./components/label";
 
-// Função para buscar os dados do jogo
+// Buscar os dados do jogo
 const getData = async (id: string): Promise<GameProps | null> => {
   try {
     const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game&id=${id}`, { next: { revalidate: 60 } });
@@ -17,7 +17,7 @@ const getData = async (id: string): Promise<GameProps | null> => {
   }
 };
 
-// Função para buscar jogos recomendados
+// Buscar jogos recomendados
 const getGamesSorted = async (): Promise<GameProps | null> => {
   try {
     const res = await fetch(`${process.env.NEXT_API_URL}/next-api/?api=game_day`, { cache: "no-store" });
@@ -29,17 +29,21 @@ const getGamesSorted = async (): Promise<GameProps | null> => {
   }
 };
 
-// Função do componente para a página de detalhes do jogo
-const GameDetail = async ({ params }: { params: { id: string } }) => {
+// Corrigir o tipo do parâmetro para ser compatível com Next.js
+interface GameDetailProps {
+  params: { id: string };
+}
+
+// Componente agora tem um tipo explícito para evitar o erro do Next.js
+const GameDetail = async ({ params }: GameDetailProps) => {
   const { id } = params;
 
   // Buscar os dados do jogo e os jogos recomendados
   const data = await getData(id);
   const gameSorted = await getGamesSorted();
 
-  // Verificar se os dados estão disponíveis
   if (!data) {
-    return <div>Jogo não encontrado</div>; // Se os dados não forem encontrados
+    return <div>Jogo não encontrado</div>;
   }
 
   return (
@@ -61,7 +65,7 @@ const GameDetail = async ({ params }: { params: { id: string } }) => {
 
         <h2 className="font-bold text-lg mt-7 mb-2">Plataformas</h2>
         <div className="flex gap-2 flex-wrap my-4">
-          {data?.platforms?.length ? (
+          {data.platforms?.length ? (
             data.platforms.map((item) => <Label name={item} key={item} />)
           ) : (
             <p>Carregando ou sem plataformas...</p>
