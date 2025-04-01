@@ -5,6 +5,12 @@ import { Container } from "@/components/container";
 import { GameProps } from "@/utils/types/game";
 import { Label } from "./components/label";
 
+export const metadata: Metadata ={
+
+  title: "Jogo recomendado",
+  description: "Recomendação de jogo"
+}
+
 // Buscar os dados do jogo
 const getData = async (id: string): Promise<GameProps | null> => {
   try {
@@ -31,12 +37,14 @@ const getGamesSorted = async (): Promise<GameProps | null> => {
 
 // Corrigir o tipo do parâmetro para ser compatível com Next.js
 interface GameDetailProps {
-  params: { id: string }; // Garantir que 'params' tem o formato esperado
+  params: { id: string | any };
 }
+
+
 
 // Componente agora tem um tipo explícito para evitar o erro do Next.js
 const GameDetail = async ({ params }: GameDetailProps) => {
-  const { id } = params; // Aqui, `params.id` deve ser resolvido corretamente
+  const { id } = params;
 
   // Buscar os dados do jogo e os jogos recomendados
   const data = await getData(id);

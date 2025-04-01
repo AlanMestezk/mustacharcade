@@ -1,4 +1,3 @@
-import { Footer } from "@/components/footer";
 import                           "./globals.css";
 import { Header }            from "@/components/header";
 import type { Metadata }     from "next";
@@ -18,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 
   icons      : "/LogoIcon.png",
-  title      : "MustacheArcade",
+  title      : "Mustache Arcade",
   keywords   :['games', 'jogos', 'steam', 'epic games', 'indicação', 'análise', 'videogame', 'pc gamer'],
   description: "Neste site, você encontra análises e recomendações de jogos para quando não souber o que jogar.",
 

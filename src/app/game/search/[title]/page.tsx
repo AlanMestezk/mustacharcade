@@ -4,6 +4,13 @@ import { Input }     from "@/components/input";
 import { GameCard }  from "@/components/gameCard";
 import { Container } from "@/components/container";
 import { GameProps } from "@/utils/types/game";
+import { Metadata } from 'next';
+
+export const metadata: Metadata ={
+
+    title: "Buscar jogos",
+    description: "Buscador de jogos"
+}
 
 const gamesData = async(title:string)=>{
 
