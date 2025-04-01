@@ -34,3 +34,7 @@
    npm install
    npm run dev
 
+## Main website panel
+
+
+<img width="1296" alt="Capturar" src="https://github.com/user-attachments/assets/f3f22fdf-ab8a-4f08-ac45-c34f5fec550f" />
