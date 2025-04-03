@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import logo                    from '../../../public/LogoIcon.png'
+import logo                    from '../../../../public/LogoIcon.png'
 import Link                    from 'next/link'
 import Image                   from 'next/image'
 import { MdOutlineGames }      from "react-icons/md";

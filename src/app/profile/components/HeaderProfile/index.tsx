@@ -1,6 +1,6 @@
 'use client'
 
-import { Container }           from '@/components/container'
+import { Container }           from '@/app/components/container'
 import Image                   from 'next/image'
 import { useState, useEffect } from 'react'
 import { Settings }            from '../Settings'
@@ -24,7 +24,7 @@ export const HeaderProfile: React.FC = ()=>{
 
     return(
 
-        <main className='-mt-32 xs:mt-44 bg-custom-gradient-blue rounded-lg'>
+        <main className='-mt-32 xs:mt-22 bg-custom-gradient-blue rounded-lg'>
             <Container>
 
                 {

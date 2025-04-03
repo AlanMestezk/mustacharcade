@@ -1,11 +1,11 @@
 import Link                 from "next/link";
 import Image                from "next/image";
-import {Input}              from '@/components/input/index'
-import { GameCard }         from "@/components/gameCard";
-import { Container }        from "@/components/container";
+import {Input}              from '@/app/components/input/index'
+import { GameCard }         from "@/app/components/gameCard";
+import { Container }        from "@/app/components/container";
 import { GameProps }        from "@/utils/types/game";
 import { CgArrowTopRightR } from "react-icons/cg";
-import { Footer }           from "@/components/footer";
+import { Footer }           from "@/app/components/footer";
 
 const getDalyGame = async ()=>{
 

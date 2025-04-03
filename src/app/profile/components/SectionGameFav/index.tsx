@@ -1,6 +1,6 @@
 'use client'
 
-import { Container }           from "@/components/container"
+import { Container }           from "@/app/components/container"
 import { Cards }               from "./components/Cards"
 import { useEffect, useState } from "react"
 

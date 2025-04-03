@@ -1,15 +1,16 @@
 import { Metadata } from "next";
-import Image from "next/image";
-import { GameCard } from "@/components/gameCard";
-import { Container } from "@/components/container";
+import Image        from "next/image";
+import { GameCard } from "@/app/components/gameCard";
+import { Container } from "@/app/components/container";
 import { GameProps } from "@/utils/types/game";
-import { Label } from "./components/label";
+import { Label } from "../components/label";
 
-export const metadata: Metadata ={
-
-  title: "Jogo recomendado",
-  description: "Recomendação de jogo"
-}
+export const generateMetadata = (): Metadata => {
+  return {
+    title: "Jogo recomedado",
+    description: "Página de jogo recomendado",
+  };
+};
 
 // Buscar os dados do jogo
 const getData = async (id: string): Promise<GameProps | null> => {
@@ -36,16 +37,14 @@ const getGamesSorted = async (): Promise<GameProps | null> => {
 };
 
 // Corrigir o tipo do parâmetro para ser compatível com Next.js
-interface GameDetailProps {
-  params: { id: string | any };
+type GameDetailProps = {
+  params: { id: string }
+  searchParams?: { [key: string]: string | string[] | undefined }
 }
 
-
-
-// Componente agora tem um tipo explícito para evitar o erro do Next.js
-const GameDetail = async ({ params }: GameDetailProps) => {
-  const { id } = params;
-
+// Correção: Removendo Promise<>
+export default async function GameDetail({ params }: { params: { id: string } }) {
+  const id = params.id; // Agora o TypeScript trata `params` como um objeto síncrono
   // Buscar os dados do jogo e os jogos recomendados
   const data = await getData(id);
   const gameSorted = await getGamesSorted();
@@ -105,5 +104,3 @@ const GameDetail = async ({ params }: GameDetailProps) => {
     </main>
   );
 };
-
-export default GameDetail;

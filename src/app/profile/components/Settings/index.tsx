@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image                   from 'next/image'
-import { Container }           from "@/components/container"
+import { Container }           from "@/app/components/container"
 import templatePhoto           from '../../../../../public/imgProfile.png'
 import loading                 from '../../../../../public/loading.gif'
 

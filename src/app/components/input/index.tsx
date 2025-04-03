@@ -55,7 +55,7 @@ export const Input: React.FC<InputProps> = ({placeholder})=>{
             {   
                 message && 
                     <div className="flex justify-center items-center mb-2 bg-red-300 ">
-                        <strong className="text-red-600 text-sm ">Primeiro digite o jogo desejado...</strong>
+                        <strong className="text-red-600 text-sm ">First type the desired game...</strong>
                     </div>
             }
         </>
